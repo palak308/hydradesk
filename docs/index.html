@@ -1,12 +1,454 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HydraDesk - Download</title>
+  <meta name="theme-color" content="#5B2346">
+
+  <title>HydraDesk - Stay Focused. Stay Hydrated.</title>
+
+  <meta name="description"
+    content="HydraDesk is a free desktop hydration reminder and water tracking app for Windows and macOS.">
+
+  <style>
+    :root {
+      --primary: #5B2346;
+      --primary-dark: #35182D;
+      --background: #FCF9FB;
+      --text: #29212A;
+      --muted: #756B75;
+      --border: #E9DFE6;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--primary);
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: #F4E9F0;
+      border-radius: 13px;
+      font-size: 23px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 85px 0 65px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, #F1E3EC, transparent 60%);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 15px;
+      background: #F0E3EB;
+      color: var(--primary);
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: auto;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      color: var(--primary-dark);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 22px auto 30px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 14px 25px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .primary-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .subtext {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    section {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      color: var(--primary-dark);
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .download-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .device-icon {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      background: #F5EDF2;
+      border-radius: 15px;
+      font-size: 27px;
+      margin-bottom: 16px;
+    }
+
+    .download-card h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .download-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 19px;
+    }
+
+    .download-card .primary-button {
+      width: 100%;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    .features {
+      background: var(--white);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+    }
+
+    .feature-icon {
+      font-size: 25px;
+      margin-bottom: 9px;
+    }
+
+    .feature h3 {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notice {
+      background: #F5EDF2;
+      border: 1px solid #E8D6E2;
+      border-radius: 13px;
+      padding: 20px;
+      margin-top: 28px;
+      color: #574451;
+      font-size: 13px;
+    }
+
+    .notice strong {
+      color: var(--primary-dark);
+    }
+
+    footer {
+      padding: 35px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 760px) {
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 65px 0 50px;
+      }
+
+      nav {
+        min-height: 65px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Welcome to HydraDesk</h1>
-  <p>Your desktop hydration reminder.</p>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#">
+          <span class="brand-icon">💧</span>
+          HydraDesk
+        </a>
+
+        <a class="nav-link"
+           href="https://github.com/palak308/hydradesk">
+          GitHub ↗
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <span class="tag">FREE DESKTOP APPLICATION · BETA</span>
+
+        <h1>Stay focused.<br>Don't forget to hydrate.</h1>
+
+        <p>
+          A simple desktop hydration reminder and water tracker
+          that helps you remember to drink water while working
+          or studying.
+        </p>
+
+        <a href="#downloads" class="primary-button">
+          Download HydraDesk ↓
+        </a>
+
+        <span class="subtext">
+          Free to use · Windows and macOS
+        </span>
+      </div>
+    </section>
+
+    <section id="downloads">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Download HydraDesk</h2>
+          <p>Choose the installer for your computer.</p>
+        </div>
+
+        <div class="download-grid">
+
+          <div class="download-card">
+            <div class="device-icon">🖥️</div>
+            <h3>Windows</h3>
+            <p>For Windows computers</p>
+
+            <a class="primary-button"
+               href="https://github.com/palak308/hydradesk/releases/download/v0.1.0/HydraDesk-0.1.0-Windows.exe">
+              Download for Windows
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="device-icon">💻</div>
+            <h3>macOS Apple Silicon</h3>
+            <p>For M-series Mac computers</p>
+
+            <a class="primary-button"
+               href="https://github.com/palak308/hydradesk/releases/download/v0.1.0/HydraDesk-0.1.0-macOS-AppleSilicon.dmg">
+              Download for Apple Silicon
+            </a>
+          </div>
+
+          <div class="download-card">
+            <div class="device-icon">🍎</div>
+            <h3>macOS Intel</h3>
+            <p>For Intel-based Mac computers</p>
+
+            <a class="primary-button"
+               href="https://github.com/palak308/hydradesk/releases/download/v0.1.0/HydraDesk-0.1.0-macOS-Intel.dmg">
+              Download for Intel Mac
+            </a>
+          </div>
+
+        </div>
+
+        <div class="notice">
+          <strong>Beta installation notice:</strong>
+          This macOS beta is currently unsigned and unnotarized.
+          macOS may display security warnings when opening it.
+          Please refer to the installation instructions in the
+          GitHub repository. Do not disable system security globally.
+        </div>
+
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Simple features. Better habits.</h2>
+          <p>Everything you need to keep track of your hydration.</p>
+        </div>
+
+        <div class="feature-grid">
+
+          <div class="feature">
+            <div class="feature-icon">🔔</div>
+            <h3>Desktop reminders</h3>
+            <p>Receive reminders to take a water break while working.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🥤</div>
+            <h3>Water intake tracking</h3>
+            <p>Log your water intake and monitor daily consumption.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Personal daily goals</h3>
+            <p>Set your own daily hydration target.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Progress history</h3>
+            <p>Review your daily hydration progress.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+
+      <div class="footer-links">
+        <a href="https://github.com/palak308/hydradesk">
+          Source Code
+        </a>
+
+        <a href="https://github.com/palak308/hydradesk/issues">
+          Report an Issue
+        </a>
+
+        <a href="https://github.com/palak308/hydradesk/releases/tag/v0.1.0">
+          Release Notes
+        </a>
+      </div>
+
+      <p>Made with care 💧 by HydraDesk</p>
+      <p>© 2026 HydraDesk. Free desktop application.</p>
+
+    </div>
+  </footer>
+
 </body>
 </html>
